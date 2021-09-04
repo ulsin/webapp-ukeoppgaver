@@ -33,7 +33,7 @@ function formaterAlleBestillinger(bestillinger) {
             // "<td>" + b.pizza.type + "</td>" + // kan man ha nested objects i JSON?
             // "<td>" + b && b.pizza ? b.pizza.type : null + "</td>" + // kan man ha nested objects i JSON?
             "<td>" + type + "</td>" +
-            "<td>" + (b.tykk ? "Tykk" : "Tynn") + "</td>" +
+            "<td>" + (b.tykk ? "Tykk" : "Tynn") + "</td>" + // tester fordi jeg dum og bruker bool i type erklæring
             "<td>" + b.antall + "</td>" +
             "<td>" + navn + "</td>" +
             "<td>" + adresse + "</td>" +
@@ -44,6 +44,7 @@ function formaterAlleBestillinger(bestillinger) {
     $("#inDiv").html(ut);
 }
 
+// Woop også bare liftet fra ukesoppgaver vet ikke om kommer til å brukes
 function slettKunde(id) {
     const url = "Kunde/Slett?id=" + id;
     $.get(url, (OK) => {

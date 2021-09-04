@@ -34,6 +34,9 @@ namespace webapp_ukeoppgaver.Controllers
         }
         */
 
+        //TODO omg fix this how do you even with all the types why did i make it so hard aaaa
+        // Only like lets you do the add but nothing shows up in the database
+        // must find a way to properly separate the data, and also make customers if there are anone
         public bool lagre(Bestilling innBestilling)
         {
             try
@@ -49,19 +52,19 @@ namespace webapp_ukeoppgaver.Controllers
         }
 
         // Dette ble jo bare samme kode men med annen type, kan man lage den mer polymorf?
-        public bool lagre(Kunde innKunde)
-        {
-            try
-            {
-                _holbergDb.Add(innKunde);
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
-        }
+        // public bool lagre(Kunde innKunde)
+        // {
+        //     try
+        //     {
+        //         _holbergDb.Add(innKunde);
+        //         return true;
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Console.WriteLine(e);
+        //         return false;
+        //     }
+        // }
 
         public List<Bestilling> hentAlle()
         {
