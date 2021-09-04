@@ -1,28 +1,42 @@
 $(() => {
-    hentAlleKunder();
+    hentAlleBestillinger();
 });
 
-function hentAlleKunder() {
+function hentAlleBestillinger() {
     $.get("Holberg/hentAlle", (bestillinger) => {
-        formaterAlleKunder(bestillinger);
+        formaterAlleBestillinger(bestillinger);
         }
     );
 }
 
-function formaterAlleKunder(kunder) {
+function formaterAlleBestillinger(bestillinger) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
+        "<th>Pizza Type</th>" +
+        "<th>Tykkelse</th>" +
+        "<th>Antall</th>" +
         "<th>Navn</th>" +
         "<th>Adresse</th>" +
-        "<th></th>" +
-        "<th></th>" +
+        "<th>Telefon Nr</th>" +
         "</tr>";
-    for (let k of kunder) {
+    for (let b of bestillinger) {
+
+        // used this i dunno : https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
+        const type = b && b.pizza ? b.pizza.type : null;
+        const navn = b && b.kunde ? b.kunde.navn : null;
+        const adresse = b && b.kunde ? b.kunde.adresse : null;
+        const tlfNr = b && b.kunde ? b.kunde.tlfNr : null;
+        
         ut += "<tr>" +
-            "<td>" + k.navn + "</td>" +
-            "<td>" + k.adresse + "</td>" +
-            "<td><a class='btn btn-primary' href='endre.html?id=" + k.id + "'>Endre</a></td>" +
-            "<td><a class='btn btn-danger' onclick='slettKunde(" + k.id + ")'>Slett</a></td>" +
+            // user && user.personalInfo ? user.personalInfo.name : null
+            // "<td>" + b.pizza.type + "</td>" + // kan man ha nested objects i JSON?
+            // "<td>" + b && b.pizza ? b.pizza.type : null + "</td>" + // kan man ha nested objects i JSON?
+            "<td>" + type + "</td>" +
+            "<td>" + (b.tykk ? "Tykk" : "Tynn") + "</td>" +
+            "<td>" + b.antall + "</td>" +
+            "<td>" + navn + "</td>" +
+            "<td>" + adresse + "</td>" +
+            "<td>" + tlfNr + "</td>" +
             "</tr>";
     }
     ut += "</table>"

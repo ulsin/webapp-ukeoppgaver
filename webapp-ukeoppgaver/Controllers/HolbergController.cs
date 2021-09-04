@@ -50,8 +50,10 @@ namespace webapp_ukeoppgaver.Controllers
         {
             try
             {
-                List<Bestilling> alleBestillingene = _holbergDb.Bestillinger.ToList();
-                return alleBestillingene;
+                List<Bestilling> alleBestillinger = _holbergDb.Bestillinger.ToList();
+                List<Kunde> alleKunder = _holbergDb.Kunder.ToList(); // funker magisk når disse står her i dunno hahah
+                List<Pizza> allePizzar = _holbergDb.Pizzaer.ToList(); // jaja
+                return alleBestillinger;
             }
             catch (Exception e)
             {
