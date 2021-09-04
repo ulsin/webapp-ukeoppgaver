@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc;
 using webapp_ukeoppgaver.Models;
 
 namespace webapp_ukeoppgaver.Controllers
 {
     [Route("[controller]/[action]")]
-    public class HolbergController
+    public class HolbergController : ControllerBase
     {
         private readonly HolbergDb _holbergDb;
 
@@ -44,6 +45,20 @@ namespace webapp_ukeoppgaver.Controllers
                 return false;
             }
         }
-        
+
+        public List<Bestilling> hentAlle()
+        {
+            try
+            {
+                List<Bestilling> alleBestillingene = _holbergDb.Bestillinger.ToList();
+                return alleBestillingene;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
     }
 }

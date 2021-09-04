@@ -1,0 +1,24 @@
+$(() => {
+    const id = window.location.search.substring(1);
+    const url = "Kunde/hentEn?" + id; //TODO skjekk om denne er feil
+    $.get(url, (kunde) => {
+        $("#id").val(kunde.id);
+        $("#navn").val(kunde.navn);
+        $("#adresse").val(kunde.adresse);
+    });
+});
+
+function endreKunde(id) {
+    const kunde = {
+        id: $("#id").val(),
+        navn: $("#navn").val(),
+        adresse: $("#adresse").val()
+    }
+    $.post("Kunde/endre", kunde, (OK) => {
+        if (OK) {
+            window.location.href = "index.html";
+        } else {
+            $("#feil").html("Feil hos server");
+        }
+    });
+}
