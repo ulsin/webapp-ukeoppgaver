@@ -1,4 +1,9 @@
 $(() => {
+    /*
+    * Denne er ikke i bruk men har tatt den med fra forelesning notat for kommer sikkert til å trenge den kanskje i dunno hahaha
+    * 
+    * 
+    * */
     const id = window.location.search.substring(1);
     const url = "Kunde/hentEn?" + id; //TODO skjekk om denne er feil
     $.get(url, (kunde) => {

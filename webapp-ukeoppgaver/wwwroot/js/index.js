@@ -22,6 +22,7 @@ function formaterAlleBestillinger(bestillinger) {
     for (let b of bestillinger) {
 
         // used this i dunno : https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
+        // Didn't really use this but good to have: https://stackoverflow.com/questions/2098276/nested-json-objects-do-i-have-to-use-arrays-for-everything
         const type = b && b.pizza ? b.pizza.type : null;
         const navn = b && b.kunde ? b.kunde.navn : null;
         const adresse = b && b.kunde ? b.kunde.adresse : null;

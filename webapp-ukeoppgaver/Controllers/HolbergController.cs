@@ -16,6 +16,23 @@ namespace webapp_ukeoppgaver.Controllers
         {
             _holbergDb = holbergDb;
         }
+        
+        /*
+         // Adrian sitt forslag, tror den er bra!!
+         public bool lagre<T>(T innObj) where T : class
+        {
+            try
+            {
+                _holbergDb.Add(innObj);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+        */
 
         public bool lagre(Bestilling innBestilling)
         {
