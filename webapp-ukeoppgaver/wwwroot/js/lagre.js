@@ -1,12 +1,17 @@
 function lagreBestilling() {
     const bestilling = {
-        type: $("#type").val(),
-        // tykk: $("#tykk").val(), //supposed to be like this
-        tykk: true, // just for a moment pls no kill
+        pizza: {
+            // id: null,
+            type: $("#type").val()
+        },
+        tykk: true, // untill i set up radio right
         antall: $("#antall").val(),
-        navn: $("#navn").val(),
-        adresse: $("#adresse").val(),
-        tlfNr: $("#tlfNr").val()
+        kunde: {
+            // id: null,
+            navn: $("#navn").val(),
+            adresse: $("#adresse").val(),
+            tlfNr: $("#tlfNr").val()
+        }
     }
     $.post("Holberg/lagre", bestilling, (OK) => {
         if (OK) {

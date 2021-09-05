@@ -41,7 +41,19 @@ namespace webapp_ukeoppgaver.Controllers
         {
             try
             {
+                int bestillingId = _holbergDb.Bestillinger.Max(b => b.id);
+                int pizzaId = _holbergDb.Pizzaer.Max(b => b.id);
+                int kundeId = _holbergDb.Kunder.Max(b => b.id);
+                // var userId = _holbergDb.Kunder.OrderByDescending(k => k.id).FirstOrDefault();
+
+                innBestilling.id = _holbergDb.Bestillinger.Max(b => b.id) + 1;
+                innBestilling.pizza.id = ++pizzaId;
+                innBestilling.kunde.id = ++kundeId;
+                // can probably temporarily fix this by getting max id and setting it + 1 to the inn obj in both pizza and stuff ye
+                Console.WriteLine(innBestilling.ToString()); //need some debug yoo
                 _holbergDb.Add(innBestilling);
+                // forgot to save changes KMS
+                _holbergDb.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -50,22 +62,7 @@ namespace webapp_ukeoppgaver.Controllers
                 return false;
             }
         }
-
-        // Dette ble jo bare samme kode men med annen type, kan man lage den mer polymorf?
-        // public bool lagre(Kunde innKunde)
-        // {
-        //     try
-        //     {
-        //         _holbergDb.Add(innKunde);
-        //         return true;
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         Console.WriteLine(e);
-        //         return false;
-        //     }
-        // }
-
+        
         public List<Bestilling> hentAlle()
         {
             try
@@ -73,6 +70,12 @@ namespace webapp_ukeoppgaver.Controllers
                 List<Bestilling> alleBestillinger = _holbergDb.Bestillinger.ToList();
                 List<Kunde> alleKunder = _holbergDb.Kunder.ToList(); // funker magisk når disse står her i dunno hahah
                 List<Pizza> allePizzar = _holbergDb.Pizzaer.ToList(); // jaja
+                
+                // cheap debug writes
+                foreach (var bestilling in alleBestillinger)
+                {
+                    Console.WriteLine(bestilling.ToString());
+                }
                 return alleBestillinger;
             }
             catch (Exception e)
