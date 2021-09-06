@@ -5,7 +5,7 @@ $(() => {
     * 
     * */
     const id = window.location.search.substring(1);
-    const url = "Kunde/hentEn?" + id; //TODO skjekk om denne er feil
+    const url = "Kunde/hentEn?" + id;
     $.get(url, (kunde) => {
         $("#id").val(kunde.id);
         $("#navn").val(kunde.navn);

@@ -1,6 +1,19 @@
-// function hentPizzaer() {
-//     .get
-// }
+$(() => {
+    hentPizzaer();
+})
+/*TODO 
+ * Fix Radio menu for choosing thick or not.*/
+
+function hentPizzaer() {
+    $.get("Holberg/hentPizza", (pizzaer) => {
+        let ut = "<option>Velg merke</option>";
+        for (const p of pizzaer) {
+            ut += "<option id='" + p.id + "'>" + p.type + "</option>"
+        }
+
+        $("#type").html(ut);
+    });
+}
 
 function lagreBestilling() {
     const bestilling = {

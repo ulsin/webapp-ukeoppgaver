@@ -35,9 +35,6 @@ namespace webapp_ukeoppgaver.Controllers
         }
         */
 
-        //TODO omg fix this how do you even with all the types why did i make it so hard aaaa
-        // Only like lets you do the add but nothing shows up in the database
-        // must find a way to properly separate the data, and also make customers if there are anone
         public bool lagre(Bestilling innBestilling)
         {
             try
@@ -90,6 +87,19 @@ namespace webapp_ukeoppgaver.Controllers
                     Console.WriteLine(bestilling.ToString());
                 }
                 return alleBestillinger;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
+        public List<Pizza> hentPizza()
+        {
+            try
+            {
+                return _holbergDb.Pizzaer.ToList();
             }
             catch (Exception e)
             {
