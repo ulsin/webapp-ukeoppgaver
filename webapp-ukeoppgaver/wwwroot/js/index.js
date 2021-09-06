@@ -28,6 +28,7 @@ function formaterAlleBestillinger(bestillinger) {
         const adresse = b && b.kunde ? b.kunde.adresse : null;
         const tlfNr = b && b.kunde ? b.kunde.tlfNr : null;
         
+        
         ut += "<tr>" +
             // user && user.personalInfo ? user.personalInfo.name : null
             // "<td>" + b.pizza.type + "</td>" + // kan man ha nested objects i JSON?

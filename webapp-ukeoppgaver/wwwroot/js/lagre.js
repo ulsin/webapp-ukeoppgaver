@@ -1,3 +1,7 @@
+// function hentPizzaer() {
+//     .get
+// }
+
 function lagreBestilling() {
     const bestilling = {
         pizza: {
