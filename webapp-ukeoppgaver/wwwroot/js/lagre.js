@@ -1,8 +1,6 @@
 $(() => {
     hentPizzaer();
 })
-/*TODO 
- * Fix Radio menu for choosing thick or not.*/
 
 function hentPizzaer() {
     $.get("Holberg/hentPizza", (pizzaer) => {
@@ -19,9 +17,11 @@ function lagreBestilling() {
     const bestilling = {
         pizza: {
             // id: null,
+            // id: $("#type").attr('id'), // did not work, kept giving duplicate pizzas
             type: $("#type").val()
         },
-        tykk: true, // untill i set up radio right
+        // tykk: true, // untill i set up radio right
+        tykk: $("input:radio[name=tykkelse]:checked").val(), // 100% stole this from tor
         antall: $("#antall").val(),
         kunde: {
             // id: null,

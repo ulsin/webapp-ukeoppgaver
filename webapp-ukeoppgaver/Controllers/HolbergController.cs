@@ -45,6 +45,11 @@ namespace webapp_ukeoppgaver.Controllers
                 // Should probably test on more that just the name, and should seperate name haha
                 // Could have it be so that we changed the DB entry if the adress was updated but that is way more than the task is asking.
                 Kunde testKunde = _holbergDb.Kunder.FirstOrDefault(k => k.navn == innBestilling.kunde.navn);
+                // feels hacky to get the whole pizza because i can't get the id but ye
+                Pizza testPizza = _holbergDb.Pizzaer.FirstOrDefault(p => p.type == innBestilling.pizza.type);
+                innBestilling.pizza = testPizza;
+                
+                
                 if (testKunde is null) //om innkunden ikke fantes
                 {
                     innBestilling.kunde.id = _holbergDb.Kunder.Max(b => b.id) + 1;
@@ -58,7 +63,7 @@ namespace webapp_ukeoppgaver.Controllers
                 // Increments order ID, and pizza ID.
                 // Needs to be removed in favour of pizza list dropdown
                 innBestilling.id = _holbergDb.Bestillinger.Max(b => b.id) + 1; // increments the bestillingId
-                innBestilling.pizza.id = _holbergDb.Pizzaer.Max(b => b.id) + 1;
+                // innBestilling.pizza.id = _holbergDb.Pizzaer.Max(b => b.id) + 1; // stopped incrementing pizza as we now have like the dropnow
                 
                 Console.WriteLine(innBestilling.ToString()); //need some debug yoo
                 
