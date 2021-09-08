@@ -45,7 +45,7 @@ function formaterAlleBestillinger(bestillinger) {
     $("#inDiv").html(ut);
 }
 
-// Woop også bare liftet fra ukesoppgaver vet ikke om kommer til å brukes
+// Woop også bare liftet fra 1700 ukesoppgaver vet ikke om kommer til å brukes
 function slettKunde(id) {
     const url = "Kunde/Slett?id=" + id;
     $.get(url, (OK) => {

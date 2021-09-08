@@ -16,11 +16,11 @@ function hentPizzaer() {
 function lagreBestilling() {
     const bestilling = {
         pizza: {
+            // TODO spør om det er noen måte å hente ID på, for å unngå å hente pizza fra DB for så å legge den inn | Tor sier nei, du må ha en pizza ut og feste til bestilling
             // id: null,
             // id: $("#type").attr('id'), // did not work, kept giving duplicate pizzas
             type: $("#type").val()
         },
-        // tykk: true, // untill i set up radio right
         tykk: $("input:radio[name=tykkelse]:checked").val(), // 100% stole this from tor
         antall: $("#antall").val(),
         kunde: {
